@@ -1,0 +1,81 @@
+
+body {
+    border-top: 10px solid $blue;
+    background:white;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+ 
+
+.container {
+    max-width: 1000px;
+ 
+    margin: 0 auto;    
+}
+
+.content {
+
+}
+
+ 
+
+a:link, a:visited {
+    color: $pink;
+}
+a:hover {
+    color: $blue;
+}
+
+form {
+    padding: 20px;
+    margin: 0px;
+    background: $gray;
+    width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow:hidden;
+    button {
+        margin-top: 40px;
+        padding: 20px;
+        width: 100%;
+        text-align:center;
+    }
+}
+input {
+    font-size: 18px;
+    color: #333;
+    padding: 20px;
+    outline: none;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    min-width: 560px;
+
+}
+.button, button {
+    background: $blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white!important;
+    display: inline-block;
+    font-size: 18px;
+    &:hover {
+        background: $pink;
+    }
+}
+
+label {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.error {
+    color: $pink;
+}

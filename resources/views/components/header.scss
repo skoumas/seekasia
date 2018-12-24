@@ -1,0 +1,29 @@
+.header {
+    display: table;
+    width: 100%;
+    margin-bottom: 50px;
+    &__left {
+        a {
+            margin:0px!important;
+            padding: 0px!important;
+        }
+        display: table-cell;
+        width: 40%;
+        text-align: left;
+        vertical-align: middle;
+        img {
+            width: 300px;
+        }
+    }
+    &__right {
+        display: table-cell;
+        width: 60%; 
+        vertical-align: middle;
+        text-align:  right;
+       
+    } 
+    a {
+        text-decoration: none;
+        margin-left: 20px;
+    } 
+}

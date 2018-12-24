@@ -1,0 +1,62 @@
+.admin {
+    display: table;
+    width: 100%;
+    min-height: 100vh;
+    
+    &__left {
+        display: table-cell;
+        width: 15%;
+        min-width: 200px;
+        vertical-align: top;
+        background: $gray;
+     
+    }  
+    &__right {
+        display: table-cell;
+        width: 70%;
+        vertical-align: top;
+        &__top {
+            background: darken($gray,10);
+            padding: 20px;
+            
+            text-align: right;
+        }
+        &__inner {
+            padding-left: 40px;
+            padding-top: 40px;
+            padding-right: 40px;
+        }
+    }
+    &__message {
+        padding: 20px;
+        border:1px solid $pink;
+        margin-bottom: 50px;
+        color: $pink;
+    }
+    table {
+        border: none;
+        border-collapse: separate;
+        border-spacing: 1px;
+        tr {
+            
+            &:nth-child(odd) {
+                background: $gray;
+            }
+            th {
+                padding: 10px;
+                background-color: $blue;
+                color: white;
+                text-align: left;
+                font-size: 14px;
+            }
+            td {
+                padding: 10px;
+                font-size: 14px;
+ 
+            }
+        }
+        width: 100%;
+         
+    }
+}
+
