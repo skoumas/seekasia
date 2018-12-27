@@ -56,12 +56,8 @@ class SendDailyEmail implements ShouldQueue
                 $savedEmail->updated_at = \Carbon\Carbon::now();
                 $savedEmail->save();
             } catch(\Exception $e){
-                // Get error here
-              
+                // Get error here          
                 throw new Exception($e);
-             
-
-                
             }
         }
          
