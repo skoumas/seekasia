@@ -25,4 +25,4 @@ COPY ./init.sh init.sh
 RUN ["chmod", "+x", "./init.sh"]
 RUN ./init.sh
 # We start our cron script here
-RUN ["service", "cron", "start"]
+# COPY  ./start-queue.conf /etc/supervisor/conf.d/start-queue.conf

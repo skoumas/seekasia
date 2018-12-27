@@ -7,6 +7,7 @@ The system can actually send emails already as it is linked to a demo SendGrid a
 ## How to start
 - Have docker and docker-compose installed at your machine
 - Go to the root directory and run ` docker-compose up -d`
+- Run the command `docker exec -it seekasia.app service cron start` to start the cron service
 - Connect to the database using the user: seekasia and password: CABinNYQRwu8XqcRqxdxQEAG post: 3306
 - Import the `sql.sql` file from the root directory
 - The `sql.sql` contains two users and also `demo` data of failed jobs, send jobs and email that have been sent.
