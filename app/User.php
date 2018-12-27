@@ -35,14 +35,17 @@ class User extends Authenticatable
     }
 
     public function calculateStatus() {
+        $this->last_status_check = \Carbon\Carbon::now();
+        $this->save();
+        
         if ($this->status=="active") {
-            if ($this->dateDifferenceInDays($this->last_login) > 4) {
+            if ($this->dateDifferenceInDays($this->last_login) > env('EMAIL_F_FOR_INACTIVE', 4)) {
                 $this->status = "not_responsive";
                 $this->save();
                 return;
             }
         } elseif ($this->status=="not_responsive") {
-            if ($this->dateDifferenceInDays($this->last_login) > 2) {
+            if ($this->dateDifferenceInDays($this->last_login) > env('DAYS_TO_NONACTIVE', 2)) {
                 $this->status = "inactive";
                 $this->save();
                 return;
@@ -52,7 +55,7 @@ class User extends Authenticatable
                 return;
             }
         }  elseif ($this->status=="inactive") {
-            if ($this->dateDifferenceInDays($this->last_login) < 4) {
+            if ($this->dateDifferenceInDays($this->last_login) < env('EMAIL_F_FOR_INACTIVE', 4)) {
                 $this->status = "active";
                 $this->save();
                 return;
@@ -62,13 +65,13 @@ class User extends Authenticatable
 
     public function sendEmail() {
         if ($this->status=="active") {
-            //if ($this->dateDifferenceInDays($this->last_email) > 1) {
+            if ($this->dateDifferenceInDays($this->last_email) > env('EMAIL_F_FOR_ACTIVE', 1) ) {
                 dispatch(new \App\Jobs\SendDailyEmail($this));
-            //}
+            }
         } elseif ($this->status=="not_responsive") {
-            //if ($this->dateDifferenceInDays($this->last_email) > 3) {
+            if ($this->dateDifferenceInDays($this->last_email) > env('EMAIL_F_FOR_INACTIVE', 3) ) {
                 dispatch(new \App\Jobs\SendDailyEmail($this));
-            //}
+            }
         }  elseif ($this->status=="inactive") {
            // Dont send anything
         }

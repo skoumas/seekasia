@@ -37,6 +37,8 @@ After running `docker-compose up -d` the schedule task should operate daily whil
 - storage: Laravel Logs
 - tests: PHP Tests
 - vendor: Laravel libraries not included in the git.
+- cronlog: Contains all the cron execution logs
+- gulpfile.js: Contains the gulp scripts for creating the SCSS and JS compiled files
 
 ## Admin Panel
 - /admin: The main administration screen
@@ -48,6 +50,13 @@ After running `docker-compose up -d` the schedule task should operate daily whil
 
 ## Support
 If any issues please contact me a `skoumas.net@gmail.com` or `60179180`
+
+## Variables
+The variables for the application are under .env file as follow:
+- EMAIL_F_FOR_ACTIVE : The frequency of emails for the active user
+- EMAIL_F_FOR_INACTIVE: The frequency of emails for the in-active user
+- DAYS_TO_NOTRESPONSIVE: Days need to pass to make an account not responsive
+- DAYS_TO_NONACTIVE: Days need to pass to make an account not active
 
 ## TODO
 - Tests
