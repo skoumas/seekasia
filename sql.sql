@@ -7,7 +7,7 @@
 #
 # Host: 0.0.0.0 (MySQL 5.6.42)
 # Database: seekasia
-# Generation Time: 2018-12-27 07:00:55 +0000
+# Generation Time: 2018-12-27 11:30:41 +0000
 # ************************************************************
 
 
@@ -103,7 +103,21 @@ VALUES
 	(61,'<p>Hi georgios</p>',1,'2018-12-27 06:59:54','2018-12-27 06:59:54','2018-12-27 06:59:54'),
 	(62,'<p>Hi test</p>',3,'2018-12-27 06:59:55','2018-12-27 06:59:55','2018-12-27 06:59:55'),
 	(63,'<p>Hi georgios</p>',1,'2018-12-27 07:00:05','2018-12-27 07:00:05','2018-12-27 07:00:05'),
-	(64,'<p>Hi test</p>',3,'2018-12-27 07:00:07','2018-12-27 07:00:07','2018-12-27 07:00:07');
+	(64,'<p>Hi test</p>',3,'2018-12-27 07:00:07','2018-12-27 07:00:07','2018-12-27 07:00:07'),
+	(65,'<p>Hi georgios</p>',1,'2018-12-27 07:01:07','2018-12-27 07:01:07','2018-12-27 07:01:07'),
+	(66,'<p>Hi test</p>',3,'2018-12-27 07:01:07','2018-12-27 07:01:07','2018-12-27 07:01:07'),
+	(67,'<p>Hi georgios</p>',1,'2018-12-27 07:02:05','2018-12-27 07:02:05','2018-12-27 07:02:05'),
+	(68,'<p>Hi test</p>',3,'2018-12-27 07:02:05','2018-12-27 07:02:05','2018-12-27 07:02:05'),
+	(69,'<p>Hi georgios</p>',1,'2018-12-27 09:20:14','2018-12-27 09:20:14','2018-12-27 09:20:14'),
+	(70,'<p>Hi georgios</p>',1,'2018-12-27 09:20:36','2018-12-27 09:20:36','2018-12-27 09:20:36'),
+	(71,'<p>Hi georgios</p>',1,'2018-12-27 09:36:01','2018-12-27 09:36:01','2018-12-27 09:36:01'),
+	(72,'<p>Hi georgios</p>',1,'2018-12-27 09:36:20','2018-12-27 09:36:20','2018-12-27 09:36:20'),
+	(73,'<p>Hi nick</p>',4,'2018-12-27 10:30:34','2018-12-27 10:30:34','2018-12-27 10:30:34'),
+	(74,'<p>Hi nick</p>',4,'2018-12-27 10:52:28','2018-12-27 10:52:28','2018-12-27 10:52:28'),
+	(75,'<p>Hi georgios</p>',1,'2018-12-27 10:57:34','2018-12-27 10:57:34','2018-12-27 10:57:34'),
+	(76,'<p>Hi georgios</p>',1,'2018-12-27 11:09:08','2018-12-27 11:09:08','2018-12-27 11:09:08'),
+	(77,'<p>Hi georgios</p>',1,'2018-12-27 11:09:09','2018-12-27 11:09:09','2018-12-27 11:09:09'),
+	(78,'<p>Hi georgios</p>',1,'2018-12-27 11:29:06','2018-12-27 11:29:06','2018-12-27 11:29:06');
 
 /*!40000 ALTER TABLE `emails` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -234,6 +248,7 @@ CREATE TABLE `users` (
   `last_login` timestamp NULL DEFAULT NULL,
   `last_email` timestamp NULL DEFAULT NULL,
   `welcome_email` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_status_check` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -241,10 +256,11 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `status`, `admin`, `last_login`, `last_email`, `welcome_email`)
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `status`, `admin`, `last_login`, `last_email`, `welcome_email`, `last_status_check`)
 VALUES
-	(1,'georgios','skoumas.net@gmail.com',NULL,'$2y$10$NkN24/mTkFUzSe1hRq8eVu8txGbnWdwssppOZIERWkJKnlZNtn/82','Hd7lINcWLp86gNyV9TrtYHtuH0G6zymEIQ72fKEsskZw2Jf1bu9xHXilaYZG','2018-12-24 08:40:44','2018-12-27 07:00:05','active',1,'2018-12-27 06:18:20','2018-12-27 07:00:05','2018-12-20 10:56:36'),
-	(3,'test','testing@gmail.cmo',NULL,'$2y$10$DgQuhgmZP1xLqr.wgru9Iu3kyMncWjuQiY6GIl1VbPXZNY0brss7C','uWvjHQGkDUQ7d0boaRIQ7kjl5ZiiYNtNmIeaTSwM8hoOD6X1YtczAderzoTm','2018-12-24 09:52:40','2018-12-27 07:00:07','active',NULL,'2018-12-24 10:01:55','2018-12-27 07:00:07','2018-12-24 10:56:36');
+	(1,'georgios','skoumas.net@gmail.com',NULL,'$2y$10$NkN24/mTkFUzSe1hRq8eVu8txGbnWdwssppOZIERWkJKnlZNtn/82','qdDCdxXykJIpnihL7FCO0XMmVWt0mGitni8V7lIvHIpsISHtafNIjQXa1QNC','2018-12-24 08:40:44','2018-12-27 11:29:06','active',1,'2018-12-27 10:28:46','2018-12-27 11:29:06','2018-12-20 10:56:36','2018-12-27 11:25:31'),
+	(3,'test','testing@gmail.cmo',NULL,'$2y$10$DgQuhgmZP1xLqr.wgru9Iu3kyMncWjuQiY6GIl1VbPXZNY0brss7C','uWvjHQGkDUQ7d0boaRIQ7kjl5ZiiYNtNmIeaTSwM8hoOD6X1YtczAderzoTm','2018-12-24 09:52:40','2018-12-27 11:25:31','active',NULL,'2018-12-24 10:01:55','2018-12-27 07:02:05','2018-12-24 10:56:36','2018-12-27 11:25:31'),
+	(4,'nick','stressprovider@gmail.com',NULL,'$2y$10$Q0EBkU..tfTx5z2Ax8hYCe2jYLKe6szMyce5S.ZgXah19yEWeUqwK','jNCd7vcW7wr0cJKMOLq2isKoBBKo7KUOlnlwq64MuJ2lFJgYE1RxDBuDpk5A','2018-12-27 10:27:16','2018-12-27 11:25:31','active',NULL,'2018-12-27 10:28:19','2018-12-27 10:52:28','0000-00-00 00:00:00','2018-12-27 11:25:31');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
