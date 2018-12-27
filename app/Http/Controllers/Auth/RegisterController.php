@@ -70,7 +70,7 @@ class RegisterController extends Controller
         ]);
 
         // Send welcome Email
-        dispatch(new App\Jobs\SendEmailTest($user));
+        //dispatch(new App\Jobs\SendEmailTest($user));
 
         return $user;
     }

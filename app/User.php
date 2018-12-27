@@ -29,6 +29,9 @@ class User extends Authenticatable
     ];
 
     private function dateDifferenceInDays($to) {
+        if ($to==null) {
+            return 100000;
+        }
         $from = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', \Carbon\Carbon::now());
         $to = \Carbon\Carbon::createFromFormat('Y-m-d H:s:i', $to );
         return $to->diffInDays($from, false);
@@ -37,7 +40,7 @@ class User extends Authenticatable
     public function calculateStatus() {
         $this->last_status_check = \Carbon\Carbon::now();
         $this->save();
-        
+
         if ($this->status=="active") {
             if ($this->dateDifferenceInDays($this->last_login) > env('EMAIL_F_FOR_INACTIVE', 4)) {
                 $this->status = "not_responsive";

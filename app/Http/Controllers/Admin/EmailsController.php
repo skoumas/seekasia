@@ -11,11 +11,11 @@ class EmailsController extends Controller
 {
     
     public function index() {
-        $emails = Email::all();
+        $emails = Email::orderBy("id","DESC")->get();
         return View("admin.emails.index",["emails"=>$emails]);
     }
     public function indexByUser($id) {
-        $emails = Email::where('user_id',$id)->get();
+        $emails = Email::where('user_id',$id)->orderBy("id","DESC")->get();
         return View("admin.emails.index",["emails"=>$emails]);
     }
 
