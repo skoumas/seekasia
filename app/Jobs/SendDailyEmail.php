@@ -9,6 +9,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Mail\DailyEmail as DailyEmail;
 use Mail;
+use App\Email;
+
 use Exception;
 
 class SendDailyEmail implements ShouldQueue
@@ -45,6 +47,14 @@ class SendDailyEmail implements ShouldQueue
                 $this->user->last_email = \Carbon\Carbon::now();
                 $this->user->save();
 
+                //Save to Database
+                $savedEmail = new Email();
+                $savedEmail->body =    $email->render();
+                $savedEmail->send_at = \Carbon\Carbon::now();
+                $savedEmail->user_id = $this->user->id;
+                $savedEmail->created_at = \Carbon\Carbon::now();
+                $savedEmail->updated_at = \Carbon\Carbon::now();
+                $savedEmail->save();
             } catch(\Exception $e){
                 // Get error here
               

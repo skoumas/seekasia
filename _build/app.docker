@@ -10,11 +10,19 @@ RUN apt-get update && apt-get install -y libmcrypt-dev libpng-dev zlib1g-dev  \
     libssl-dev \
     && pecl install mcrypt-1.0.1
 
+RUN apt-get -y install cron
+RUN apt-get -y install rsyslog
+
 RUN docker-php-ext-enable mcrypt && docker-php-ext-install pdo_mysql && docker-php-ext-install gd && docker-php-ext-install bcmath
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-WORKDIR /var/www
+RUN apt-get -y install vim
 
-COPY  ./payment-queue.conf /etc/supervisor/conf.d/payment-queue.conf
+WORKDIR /var/www
+COPY ./init.sh init.sh
+RUN ["chmod", "+x", "./init.sh"]
+RUN ./init.sh
+# We start our cron script here
+RUN ["service", "cron", "start"]

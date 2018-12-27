@@ -27,6 +27,7 @@ Route::prefix('admin')->middleware("admin")->group(function () {
     Route::get('/jobs/failed', 'Admin\JobsController@failedIndex');
     Route::get('/users/{id}/test_email', 'Admin\UsersController@testEmail');
     Route::resource('/users', 'Admin\UsersController');
-    
+    Route::get('/emails', 'Admin\EmailsController@index');
+    Route::get('/emails/{id}', 'Admin\EmailsController@indexByUser');
     Route::get('/process', 'Admin\ProcessController@index');
 });

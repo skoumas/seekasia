@@ -22,6 +22,8 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    
 </head>
 <body>
     <div class="admin">

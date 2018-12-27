@@ -25,7 +25,6 @@ services:
       - app-network
     links:
       - db
-      - redis
     environment:
       - DB_PORT=3306
       - DB_HOST=db
@@ -44,30 +43,6 @@ services:
         - "3306:3306"
     networks:
       - app-network
-    restart: always
-  rabbitmq:
-    container_name: seekasia.rabbitmq
-    image: rabbitmq:3-management
-    ports:
-        - "15672:15672"
-        - "5672:5672"
-    restart: always
-    environment:
-      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
-      RABBITMQ_DEFAULT_USER: "rabbitmq"
-      RABBITMQ_DEFAULT_PASS: "rabbitmq"
-      RABBITMQ_DEFAULT_VHOST: "/"
-    networks:
-      - app-network
-  redis:
-    container_name: seekasia.redis
-    image: redis
-    ports:
-      - "6379:6379"
-    networks:
-      - app-network
-    volumes:
-      - ./_redis:/data
     restart: always
 networks:
   app-network:

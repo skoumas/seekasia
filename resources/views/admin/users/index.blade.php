@@ -20,7 +20,7 @@
         <td> {{ $user->last_login }} </td>
         <td> {{ $user->last_email }} </td>
         
-        <td> <a href="">Email history</a> | <a href="/admin/users/{{ $user->id }}/test_email">Send Daily Email</a>  </td>
+        <td> <a href="/admin/emails/{{ $user->id }}">Email history</a> | <a href="/admin/users/{{ $user->id }}/test_email">Send Daily Email</a>  </td>
     </tr>
     @endforEach
     </table>

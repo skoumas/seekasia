@@ -52,7 +52,6 @@ class User extends Authenticatable
                 return;
             }
         }  elseif ($this->status=="inactive") {
-          echo($this->dateDifferenceInDays($this->last_login) );
             if ($this->dateDifferenceInDays($this->last_login) < 4) {
                 $this->status = "active";
                 $this->save();
@@ -63,11 +62,15 @@ class User extends Authenticatable
 
     public function sendEmail() {
         if ($this->status=="active") {
-            dispatch(new \App\Jobs\SendDailyEmail($this));
+            //if ($this->dateDifferenceInDays($this->last_email) > 1) {
+                dispatch(new \App\Jobs\SendDailyEmail($this));
+            //}
         } elseif ($this->status=="not_responsive") {
-             
+            //if ($this->dateDifferenceInDays($this->last_email) > 3) {
+                dispatch(new \App\Jobs\SendDailyEmail($this));
+            //}
         }  elseif ($this->status=="inactive") {
-           
+           // Dont send anything
         }
     }
 }
